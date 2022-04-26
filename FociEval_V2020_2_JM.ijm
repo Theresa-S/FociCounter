@@ -66,7 +66,7 @@ run("Clear Results");
 #@ Float (label="Minimal nucleus size (µm)", style="slider", min=0, max=100, stepSize=0.1, value=30) min_size
 #@ Float (label="Foci Brightness: lower percentile", style="slider", min=0, max=1, stepSize=0.01, value=0) lower_perc
 #@ Float (label="Foci Brightness: upper percentile", style="slider", min=0, max=1, stepSize=0.01, value=0.98) upper_perc
-#@ Float (label="Bundary exclusion radius (µm)", min=0, max=100, value=25) boundary_exclusion
+#@ Float (label="Boundary exclusion radius (µm)", min=0, max=100, value=25) boundary_exclusion
 
 #@ Boolean (label="Batch mode",  useBatch=useBatch, value=true) useBatch
 #@ Boolean (label="Save cell-wise images",  saveImgs=saveImgs) saveImgs
@@ -145,7 +145,8 @@ function process_Main(fname, savepath){
 	print("Saving data to: " + savepath);
 
 	// Load Data
-	run("Bio-Formats (Windowless)", "open=["+fname+"] color_mode=Composite view=Hyperstack stack_order=XYCZT"); 
+	run("Bio-Formats (Windowless)", "open=["+fname+"] color_mode=Composite view=Hyperstack stack_order=XYCZT");
+ 
 	img = File.nameWithoutExtension;
 	rename(img);
 
